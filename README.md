@@ -1,12 +1,5 @@
 # mybooklibrary
 
-A project developed for **WOU TSE 309/10** course.
-
-The project used:
-- Golang for backend api server
-- Vue.js for frontend ui
-- PostgreSQL for database
-
-### Demo Screenshot
+A demo project for learning Golang and Vue.js.
 
 ![image](img/github_image.png)

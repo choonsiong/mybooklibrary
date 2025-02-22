@@ -6,7 +6,7 @@ on:
 
 env:
   api-binary-name: mybooklibrary
-  version: 1.7.0
+  version: 0.0.1
   arch: linux-x64
 jobs:
   release:
