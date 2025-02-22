@@ -23,7 +23,7 @@ jobs:
           nvm current
           npm -v
           npm install -D vite
-          cd mybooklibrary/frontend-ui && make dist
+          cd mybooklibrary/frontend-ui && npm install && make dist
           cd ../backend-api && make build_linux
           cd ../..          
           tar -czf ${{ env.binary-name }}-${{ env.arch }}-${{ env.version }}.tar.gz mybooklibrary/backend-api/mybooklibrary-api mybooklibrary/frontend-api/dist
