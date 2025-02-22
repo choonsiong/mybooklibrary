@@ -26,7 +26,10 @@ jobs:
           cd mybooklibrary/frontend-ui && npm install && make dist
           cd ../backend-api && make build_linux
           cd ../..
-          ls -al
+          mkdir ${{ env.binary-name }}-${{ env.arch }}-${{ env.version }}
+          mv mybooklibrary/frontend-ui/dist ${{ env.binary-name }}-${{ env.arch }}-${{ env.version }}/
+          mv mybooklibrary/backend-api/mybooklibrary-api ${{ env.binary-name }}-${{ env.arch }}-${{ env.version }}/
+          ls -al ${{ env.binary-name }}-${{ env.arch }}-${{ env.version }}        
           #tar -czf ${{ env.binary-name }}-${{ env.arch }}-${{ env.version }}.tar.gz mybooklibrary/backend-api/mybooklibrary-api mybooklibrary/frontend-api/dist
 #      - name: release
 #        uses: softprops/action-gh-release@v2
