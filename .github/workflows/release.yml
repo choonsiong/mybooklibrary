@@ -1,0 +1,29 @@
+name: release
+on:
+  push:
+    tags:
+      - '*'
+
+env:
+  api-binary-name: mybooklibrary
+  version: 0.0.1
+  arch: linux-x64
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+      - name: build-api
+        run: |
+          cd mybooklibrary/frontend-ui && make dist
+          cd ../backend-api && make build_linux
+          cd ../..          
+          tar -czf ${{ env.binary-name }}-${{ env.arch }}-${{ env.version }}.tar.gz mybooklibrary/backend-api/mybooklibrary-api mybooklibrary/frontend-api/dist
+      - name: release
+        uses: softprops/action-gh-release@v2
+        with:
+          token: ${{ secrets.DEVOPS_TOKEN }}
+          tag_name: ${{ env.version }}
+          name: release ${{ env.version }}
+          files: ${{ env.binary-name }}-${{ env.arch }}-${{ env.version }}.tar.gz

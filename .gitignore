@@ -1,0 +1,7 @@
+.vscode/
+.vite/
+mybooklibrary/backend-api/static/ 
+mybooklibrary-api
+bootstrap/
+dist
+dist.tar.gz
