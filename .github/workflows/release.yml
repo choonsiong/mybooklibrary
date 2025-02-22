@@ -23,13 +23,13 @@ jobs:
           nvm current
           npm -v
           npm install -D vite
-          cd mybooklibrary/frontend-ui && npm install && make dist
+          cd mybooklibrary/frontend-ui && npm install && npm install vue-router@4 && npm install notie && make dist
           cd ../backend-api && make build_linux
           cd ../..
           mkdir ${{ env.binary-name }}-${{ env.arch }}-${{ env.version }}
           mv mybooklibrary/frontend-ui/dist ${{ env.binary-name }}-${{ env.arch }}-${{ env.version }}/
           mv mybooklibrary/backend-api/mybooklibrary-api ${{ env.binary-name }}-${{ env.arch }}-${{ env.version }}/
-          ls -al ${{ env.binary-name }}-${{ env.arch }}-${{ env.version }}        
+          #ls -al ${{ env.binary-name }}-${{ env.arch }}-${{ env.version }}        
           tar -czf ${{ env.binary-name }}-${{ env.arch }}-${{ env.version }}.tar.gz ${{ env.binary-name }}-${{ env.arch }}-${{ env.version }}/
       - name: release
         uses: softprops/action-gh-release@v2
