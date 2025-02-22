@@ -14,7 +14,7 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v4
-      - name: build-api
+      - name: build
         run: |
           curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
           \. "$HOME/.nvm/nvm.sh"
@@ -25,12 +25,13 @@ jobs:
           npm install -D vite
           cd mybooklibrary/frontend-ui && npm install && make dist
           cd ../backend-api && make build_linux
-          cd ../..          
-          tar -czf ${{ env.binary-name }}-${{ env.arch }}-${{ env.version }}.tar.gz mybooklibrary/backend-api/mybooklibrary-api mybooklibrary/frontend-api/dist
-      - name: release
-        uses: softprops/action-gh-release@v2
-        with:
-          token: ${{ secrets.DEVOPS_TOKEN }}
-          tag_name: ${{ env.version }}
-          name: release ${{ env.version }}
-          files: ${{ env.binary-name }}-${{ env.arch }}-${{ env.version }}.tar.gz
+          cd ../..
+          ls -al
+          #tar -czf ${{ env.binary-name }}-${{ env.arch }}-${{ env.version }}.tar.gz mybooklibrary/backend-api/mybooklibrary-api mybooklibrary/frontend-api/dist
+#      - name: release
+#        uses: softprops/action-gh-release@v2
+#        with:
+#          token: ${{ secrets.DEVOPS_TOKEN }}
+#          tag_name: ${{ env.version }}
+#          name: release ${{ env.version }}
+#          files: ${{ env.binary-name }}-${{ env.arch }}-${{ env.version }}.tar.gz
