@@ -16,6 +16,13 @@ jobs:
         uses: actions/checkout@v4
       - name: build-api
         run: |
+          curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
+          \. "$HOME/.nvm/nvm.sh"
+          nvm install 22
+          node -v
+          nvm current
+          npm -v
+          npm install -D vite
           cd mybooklibrary/frontend-ui && make dist
           cd ../backend-api && make build_linux
           cd ../..          
