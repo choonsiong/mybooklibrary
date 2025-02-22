@@ -1,10 +1,11 @@
-# About
+# mybooklibrary
 
-This is a project developed for **WOU TSE 309/10** course.
+A project developed for **WOU TSE 309/10** course.
 
-The application consists of a backend and a frontend. The backend is developed using [Go programming language](https://go.dev), and the frontend is developed using [Vue.js](https://vuejs.org).
-
-The backend server also make use of [PostgreSQL](https://www.postgresql.org) database for data storage.
+The project used:
+- Golang for backend api server
+- Vue.js for frontend ui
+- PostgreSQL for database
 
 ### Demo Screenshot
 
